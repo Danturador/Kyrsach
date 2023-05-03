@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "GodOfWar";
+  src: url("../../../fonts/GODOFWAR.ttf");
+}
 body,
 html {
   margin: 0;
@@ -12,7 +16,7 @@ body {
 }
 @media only screen and (min-width: 768px) {
   body {
-    background: url("/Images/GoW2005.jpg") no-repeat center center fixed;
+    background: url("../../../Images/GoW2005.jpg") no-repeat center center fixed;
     -khtml-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
@@ -20,7 +24,7 @@ body {
 }
 @media only screen and (max-width: 769px) {
   body {
-    background: url("/Images/God_of_War_III_BG mobile.jpg") no-repeat center center fixed;
+    background: url("../../../Images/God_of_War_III_BG mobile.jpg") no-repeat center center fixed;
     background-size: 100% 100%;
   }
 }
@@ -30,6 +34,9 @@ p {
   padding: 0;
 }
 
+h3 {
+  font-family: GodOfWar;
+}
 @media only screen and (min-width: 768px) {
   h3 {
     width: 90%;
@@ -39,6 +46,7 @@ p {
 }
 
 .navMenu {
+  font-family: GodOfWar;
   padding: 0;
   margin: 0;
   top: 0;
