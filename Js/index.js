@@ -104,7 +104,7 @@ window.onload = function () {
         const imageNameArray = ["GoWA", "GoWCoO", "GoW2005", "GoWG", "GoWB", "GoW2", "GoW3", "GoW2018", "GoWR"]
         let pathString;
         for (let i = 0; i < p.length; i++){
-            pathString = "url('/Images/GameSeriaesConteiner/F/" + imageNameArray[i] + ".png')"
+            pathString = "url('./Images/GameSeriaesConteiner/F/" + imageNameArray[i] + ".png')"
             p[i].style.backgroundImage = pathString;
             if (i !== 0 || i !== p.length - 1) 
             {
@@ -116,7 +116,6 @@ window.onload = function () {
         }
     }
     
-    let BladesOfChaos = document.getElementsByClassName("BladesOfChaos");
     function ScrollUp(isDraging) {
         console.log(isDraging)
         if (!isDraging) {
@@ -132,15 +131,15 @@ window.onload = function () {
     function ShowGameImage() {
         const Image = document.getElementById("ImageOfTheGame");
         const imageSrc = {
-            "GoW:Ascension": "/Images/God_of_War-_Ascension2.jpg",
-            "GoW:ChainsOfOlympus": "/Images/God-of-War-Chains-of-Olympus-05f4970.jpg",
-            "GoW_2005": "/Images/GoW2005.jpg",
-            "GoW:GhostOfSparta": "/Images/god_of_war_ghost_of_sparta.jpg",
-            "GoW:Betrayal": "/Images/DbNOsPMX0AIbvIG.jpg",
-            "GoW:II": "/Images/thumbbig-410067.webp",
-            "GoW:III": "/Images/God_of_War_III.jpg",
-            "GoW_2018": "/Images/God_of_War_2018_cover.jpg",
-            "GoW:Ragnarok": "/Images/1273405.jpg"
+            "GoW:Ascension": "./Images/God_of_War-_Ascension2.jpg",
+            "GoW:ChainsOfOlympus": "./Images/God-of-War-Chains-of-Olympus-05f4970.jpg",
+            "GoW_2005": "./Images/GoW2005.jpg",
+            "GoW:GhostOfSparta": "./Images/god_of_war_ghost_of_sparta.jpg",
+            "GoW:Betrayal": "./Images/DbNOsPMX0AIbvIG.jpg",
+            "GoW:II": "./Images/thumbbig-410067.webp",
+            "GoW:III": "./Images/God_of_War_III.jpg",
+            "GoW_2018": "./Images/God_of_War_2018_cover.jpg",
+            "GoW:Ragnarok": "./Images/1273405.jpg"
         }
         for (let key in imageSrc) {
             let pElement = document.getElementById(key);
