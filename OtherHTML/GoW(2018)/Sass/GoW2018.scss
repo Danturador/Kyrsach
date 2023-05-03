@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'GodOfWar';
+    src: url('../../../fonts/GODOFWAR.ttf');
+}
+
 body,
 html {
     margin: 0;
@@ -6,7 +11,7 @@ html {
 
 body {
     @media only screen and (min-width: 768px) {
-        background: url("/Images/843016.jpg") no-repeat center center fixed;
+        background: url("../../../Images/843016.jpg") no-repeat center center fixed;
         -khtml-background-size: cover;
         -moz-background-size: cover;
         -ms-background-size: cover;
@@ -15,7 +20,7 @@ body {
         background-size: cover;
     }
     @media only screen and (max-width: 769px) {
-        background: url("/Images/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7.jpg") no-repeat center center fixed;
+        background: url("../../../Images/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7.jpg") no-repeat center center fixed;
         background-color: #000000;
         background-size: 100% 100%;
     }
@@ -31,6 +36,7 @@ p {
 }
 
 h3 {
+    font-family: GodOfWar;
     @media only screen and (min-width: 768px) {
         width: 90%;
         font-size: 200%;
@@ -39,6 +45,7 @@ h3 {
 }
 
 .navMenu {
+    font-family: GodOfWar;
     padding: 0;
     margin: 0;
     top: 0;
