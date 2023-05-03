@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "GodOfWar";
+  src: url("../../../fonts/GODOFWAR.ttf");
+}
 body,
 html {
   margin: 0;
@@ -12,7 +16,7 @@ body {
 }
 @media only screen and (min-width: 768px) {
   body {
-    background: url("/Images/God-of-War-Chains-of-Olympus-05f4970.jpg") no-repeat center center fixed;
+    background: url("../../../Images/God-of-War-Chains-of-Olympus-05f4970.jpg") no-repeat center center fixed;
     -khtml-background-size: cover;
     -ms-background-size: cover;
     background-size: cover;
@@ -20,7 +24,7 @@ body {
 }
 @media only screen and (max-width: 769px) {
   body {
-    background: url("/Images/MV5BM2YxMjExNGItYTI4NS00MjAzLWI4NDAtMTY2NGFhNWY0MzEyXkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_.jpg") no-repeat center center fixed;
+    background: url("../../../Images/MV5BM2YxMjExNGItYTI4NS00MjAzLWI4NDAtMTY2NGFhNWY0MzEyXkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_.jpg") no-repeat center center fixed;
     background-color: #000000;
     background-size: 100% auto;
   }
@@ -31,6 +35,9 @@ p {
   padding: 0;
 }
 
+h3 {
+  font-family: GodOfWar;
+}
 @media only screen and (min-width: 768px) {
   h3 {
     width: 90%;
@@ -40,6 +47,7 @@ p {
 }
 
 .navMenu {
+  font-family: GodOfWar;
   padding: 0;
   margin: 0;
   top: 0;
