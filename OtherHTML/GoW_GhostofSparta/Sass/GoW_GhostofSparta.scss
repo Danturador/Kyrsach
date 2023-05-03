@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'GodOfWar';
+    src: url('../../../fonts/GODOFWAR.ttf');
+}
+
 body,
 html {
     margin: 0;
@@ -6,7 +11,7 @@ html {
 
 body {
     @media only screen and (min-width: 768px) {
-        background: url("/Images/god_of_war_ghost_of_sparta.jpg") no-repeat center center fixed;
+        background: url("../../../Images/god_of_war_ghost_of_sparta.jpg") no-repeat center center fixed;
         -khtml-background-size: cover;
         -moz-background-size: cover;
         -ms-background-size: cover;
@@ -15,13 +20,12 @@ body {
         background-size: cover;
     }
     @media only screen and (max-width: 769px) {
-        background: url("/Images/desktop-wallpaper-raven-moran-on-god-of-war-god-of-war-ghost-of-sparta-thumbnail.jpg") no-repeat center 80px fixed;
+        background: url("../../../Images/desktop-wallpaper-raven-moran-on-god-of-war-god-of-war-ghost-of-sparta-thumbnail.jpg") no-repeat center 80px fixed;
         background-size: 100% 100%;
     }
     font-family: 'Times New Roman', Times, serif;
     color: whitesmoke;
     max-width: 100%;
-    // margin: auto;
     font-size: 18px;
 }
 
@@ -31,6 +35,7 @@ p {
 }
 
 h3 {
+    font-family: GodOfWar;
     @media only screen and (min-width: 768px) {
         width: 90%;
         font-size: 200%;
@@ -39,6 +44,7 @@ h3 {
 }
 
 .navMenu {
+    font-family: GodOfWar;
     padding: 0;
     margin: 0;
     top: 0;
