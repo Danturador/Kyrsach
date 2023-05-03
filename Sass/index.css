@@ -1,6 +1,6 @@
 @font-face {
   font-family: "GodOfWar";
-  src: url("/fonts/GODOFWAR.ttf");
+  src: url("../fonts/GODOFWAR.ttf");
 }
 body,
 html {
