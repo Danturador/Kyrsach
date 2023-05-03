@@ -125,7 +125,7 @@ window.onload = function () {
                 behavior: 'smooth'
             });
         }
-        //else $(".BladesOfChaos").draggable({ axis: 'x' })
+        
     }
     
     function ShowGameImage() {
