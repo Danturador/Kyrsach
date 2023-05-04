@@ -61,17 +61,15 @@ window.onload = function () {
         });
     }
 
-    $(window).on('swipeup', function(e){
-        OnWheelHideAnimate()
-        if (e.originalEvent.deltaY > 0 && isShowed)
-        {
-            OnWheelHideAnimate()
-        }
-        else if (e.originalEvent.deltaY < 0 && !isShowed)
-        {
-            OnWheelShowAnimate()
-        }
-    });
+    $(function(){
+  // Bind the swipeHandler callback function to the swipe event on div.box
+  $( "div.box" ).on( "swipe", swipeHandler );
+ 
+  // Callback function references the event target and adds the 'swipe' class to it
+  function swipeHandler( event ){
+    alert("swipe")
+  }
+});
     
     function OnWheelHideAnimate() {
         if ($(window).width() > 767) {
