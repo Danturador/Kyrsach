@@ -61,15 +61,15 @@ window.onload = function () {
         });
     }
 
-    $(function(){
-  // Bind the swipeHandler callback function to the swipe event on div.box
-  $( "div.box" ).on( "swipe", swipeHandler );
- 
-  // Callback function references the event target and adds the 'swipe' class to it
-  function swipeHandler( event ){
-    alert("swipe")
+    $("body").bind({
+  swipeup: function (event) { 
+ alert("up")
+},
+  swipedown: function (event) { 
+  
+  alert("down")
   }
-});
+})
     
     function OnWheelHideAnimate() {
         if ($(window).width() > 767) {
