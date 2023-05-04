@@ -61,7 +61,8 @@ window.onload = function () {
         });
     }
 
-    $(window).on('wheel', function(e){
+    $(window).on('swipeup', function(e){
+        OnWheelHideAnimate()
         if (e.originalEvent.deltaY > 0 && isShowed)
         {
             OnWheelHideAnimate()
