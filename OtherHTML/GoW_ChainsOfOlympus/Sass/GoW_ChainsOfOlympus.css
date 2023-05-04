@@ -12,6 +12,7 @@ body {
   font-family: "Times New Roman", Times, serif;
   color: whitesmoke;
   max-width: 100%;
+  min-height: 100%;
   font-size: 18px;
 }
 @media only screen and (min-width: 768px) {
@@ -83,16 +84,54 @@ h3 {
     width: 66%;
   }
 }
-
-.nav > a > p,
-#showToggleMenu > a > p {
+.nav > a {
+  text-decoration: none;
+  display: table;
+  border: 1px solid rgb(173, 70, 38);
+  cursor: pointer;
+  text-indent: 0px;
+  text-align: center;
+  background-color: rgb(211, 100, 11);
+  width: 100%;
+  height: 100%;
+}
+.nav > a:hover {
+  background: rgb(173, 70, 38);
+}
+.nav > a > p {
+  padding: 0;
+  margin: 0;
   display: table-cell;
   vertical-align: middle;
   color: whitesmoke;
   text-indent: 0px;
 }
+@media only screen and (max-width: 769px) {
+  .nav > a > p {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .nav > a > p {
+    font-size: 70%;
+  }
+}
 
-.nav > a,
+#showToggleMenu {
+  width: 20%;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+#showToggleMenu:hover {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  #showToggleMenu:hover .toggleList {
+    height: 160px;
+    border: 1px solid rgb(173, 70, 38);
+  }
+}
 #showToggleMenu > a {
   text-decoration: none;
   display: table;
@@ -100,10 +139,30 @@ h3 {
   cursor: pointer;
   text-indent: 0px;
   text-align: center;
-  margin: 0 0 auto 0;
   background-color: rgb(211, 100, 11);
   width: 100%;
   height: 100%;
+}
+#showToggleMenu > a:hover {
+  background: rgb(173, 70, 38);
+}
+#showToggleMenu > a > p {
+  padding: 0;
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle;
+  color: whitesmoke;
+  text-indent: 0px;
+}
+@media only screen and (max-width: 769px) {
+  #showToggleMenu > a > p {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #showToggleMenu > a > p {
+    font-size: 70%;
+  }
 }
 
 .toggleList {
@@ -119,24 +178,18 @@ h3 {
   overflow: hidden;
   transition: height 1s;
 }
-
+.toggleList > li {
+  width: 100%;
+  border-top: 1px solid rgb(173, 70, 38);
+}
+.toggleList > li:hover {
+  background: rgb(173, 70, 38);
+}
 .toggleList > li > a {
   width: 100%;
   height: 100%;
   text-decoration: none;
   color: whitesmoke;
-}
-
-.toggleList > li {
-  width: 100%;
-  border-top: 1px solid rgb(173, 70, 38);
-}
-
-#showToggleMenu {
-  width: 100%;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
 }
 
 .toggleMenu {
@@ -145,13 +198,6 @@ h3 {
   margin: 0;
   width: 100%;
   transition: height 1s;
-}
-
-@media only screen and (min-width: 768px) {
-  #showToggleMenu:hover .toggleList {
-    height: 177px;
-    border: 1px solid rgb(173, 70, 38);
-  }
 }
 
 .logo {
@@ -175,7 +221,6 @@ h3 {
     height: 70px;
   }
 }
-
 @media only screen and (min-width: 768px) {
   .logo > img {
     height: 45px;
@@ -220,6 +265,12 @@ h3 {
   right: 5%;
   width: 90%;
 }
+.mainContent > div {
+  margin: auto;
+  padding: 1% 0 1% 0;
+  width: 95%;
+  height: 120%;
+}
 
 .mainContent > div {
   margin: auto;
@@ -228,15 +279,13 @@ h3 {
   height: 120%;
 }
 
-.Characters_Weapons > div > div {
-  width: 100%;
-}
-
 .Characters_Weapons > div {
   display: flex;
   padding: 5px 0;
 }
-
+.Characters_Weapons > div > div {
+  width: 100%;
+}
 .Characters_Weapons > div > div > img {
   padding: 1% 0 0 0;
   opacity: 110%;
@@ -252,10 +301,9 @@ h3 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    widht: 80%;
+    width: 80%;
   }
 }
-
 @media only screen and (min-width: 768px) {
   .Characters_Weapons > div > div > p,
   .Characters_Weapons > div > div > ul,
@@ -279,19 +327,16 @@ h3 {
   width: 100%;
   height: 100%;
 }
-
-.Enemies > figure > p {
-  text-indent: 0;
-  text-align: center;
-}
-
-.Enemies > figure {
+.Enemies figure {
   width: 15%;
   float: left;
   padding-right: auto;
 }
-
-.Enemies > figure > img {
+.Enemies figure p {
+  text-indent: 0;
+  text-align: center;
+}
+.Enemies figure img {
   display: block;
   width: 100%;
   margin-left: auto;
@@ -305,19 +350,16 @@ h3 {
   width: 100%;
   height: 100%;
 }
-
-.Bosses > figure > p {
-  text-indent: 0;
-  text-align: center;
-}
-
-.Bosses > figure {
+.Bosses figure {
   width: 15%;
   float: left;
   padding-right: auto;
 }
-
-.Bosses > figure > img {
+.Bosses figure p {
+  text-indent: 0;
+  text-align: center;
+}
+.Bosses figure img {
   display: block;
   width: 100%;
   margin-left: auto;
