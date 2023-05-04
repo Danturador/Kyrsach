@@ -1,6 +1,11 @@
-@font-face{
+@font-face {
     font-family: 'GodOfWar';
     src: url('../fonts/GODOFWAR.ttf');
+}
+
+@mixin w_h_100 {
+    width: 100%;
+    height: 100%;
 }
 
 body,
@@ -20,19 +25,23 @@ body {
     font-family: 'Times New Roman', Times, serif;
     color: whitesmoke;
     max-width: 100%;
+    min-height: 100%;
     font-size: 18px;
+
 }
 
-body > div > p {
+.GameSeriesLabel {
     font-family: GodOfWar;
     position: absolute;
+
     @media only screen and (max-width: 1201px) {
         margin-top: 2%;
     }
-    
+
     @media only screen and (min-width: 1200px) {
         margin-top: 3%;
     }
+
     z-index: 10;
 }
 
@@ -59,9 +68,11 @@ body > div > p {
     z-index: 1000;
     width: 100%;
     position: fixed;
+
     @media only screen and (min-width: 768px) {
         justify-content: right;
     }
+
     @media only screen and (max-width: 769px) {
         background-color: #000000;
     }
@@ -72,6 +83,7 @@ body > div > p {
     justify-content: right;
     height: 45px;
     position: fixed;
+
     @media only screen and (max-width: 769px) {
         width: 100%;
         padding-top: 70px;
@@ -81,28 +93,34 @@ body > div > p {
         width: 66%;
     }
 
-}
+    a {
+        @include w_h_100;
+        text-decoration: none;
+        display: table;
+        border: 1px solid rgba(6, 31, 119, 1);
+        cursor: pointer;
+        text-indent: 0px;
+        text-align: center;
+        margin: 0 0 auto 0;
+        background-color: rgba(76, 74, 210, 1);
 
-.nav>a>p{
-    font-family: GodOfWar;
-    font-size: 80%;
-    display: table-cell;
-    vertical-align: middle;
-    color: whitesmoke;
-    text-indent: 0px;
-}
+        p {
+            font-family: GodOfWar;
 
-.nav>a{
-    text-decoration: none;
-    display: table;
-    border: 1px solid rgba(6, 31, 119, 1);
-    cursor: pointer;
-    text-indent: 0px;
-    text-align: center;
-    margin: 0 0 auto 0;
-    background-color: rgba(76, 74, 210, 1);
-    width: 100%;
-    height: 100%;
+            @media only screen and (max-width: 769px) {
+                font-size: 50%;
+            }
+
+            @media only screen and (min-width: 768px) {
+                font-size: 70%;
+            }
+
+            display: table-cell;
+            vertical-align: middle;
+            color: whitesmoke;
+            text-indent: 0px;
+        }
+    }
 }
 
 .shadowGradient {
@@ -128,31 +146,29 @@ body > div > p {
 .Games {
     display: inline-block;
     width: 35%;
-}
 
-.Games>a,
-.Games>a>p
-{
-    font-family: GodOfWar;
-    font-size: 85%;
-    background-repeat: no-repeat;
-    background-size: 100% 106%;
-    text-decoration: none;
-    color: whitesmoke;
-    line-height: 50px;
-    width: 100%;
-    height: 50.25px;
-    border-collapse: collapse;
-}
+    a,
+    a>p {
+        font-family: GodOfWar;
+        font-size: 85%;
+        background-repeat: no-repeat;
+        background-size: 100% 106%;
+        text-decoration: none;
+        color: whitesmoke;
+        line-height: 50px;
+        width: 100%;
+        height: 50px;
+        border-collapse: collapse;
+    }
 
-.Games>p:hover {
-    cursor: pointer;
+    p:hover {
+        cursor: pointer;
+    }
 }
 
 .GameSeriaesConteiner {
     display: flex;
     background-color: aqua;
-    // margin-top: 2%;
     width: 100%;
     height: 470px;
 }
@@ -166,19 +182,22 @@ body > div > p {
     width: 100%;
     padding: 0;
     margin: 0;
-}
-.GameSeriaesMobile > h3{
-    color: whitesmoke;
-    text-indent: 10px;
-    margin-bottom: 5px;
-}
-.GameSeriaesMobile > a{
-    width: 100%;
-}
-.GameSeriaesMobile > a > img{
-    width: 100%;
-    margin-top: -4px;
-    margin-bottom: -1px;
+
+    h3 {
+        color: whitesmoke;
+        text-indent: 10px;
+        margin-bottom: 5px;
+    }
+
+    a {
+        width: 100%;
+    }
+
+    a>img {
+        width: 100%;
+        margin-top: -4px;
+        margin-bottom: -1px;
+    }
 }
 
 .DivImageOfTheGame {
@@ -187,20 +206,21 @@ body > div > p {
 }
 
 .ImageOfTheGame {
-    width: 100%;
-    height: 100%;
+    @include w_h_100;
     margin: auto;
 }
 
 .BladesOfChaos {
     @media only screen and (min-width: 768px) {
-        top:-8px;
+        top: -8px;
         width: 10%;
     }
+
     @media only screen and (max-width: 769px) {
         top: 75px;
         width: 20%;
     }
+
     position: absolute;
     right: 0;
     z-index: 0;
@@ -210,6 +230,7 @@ body > div > p {
 .logo {
     position: relative;
     z-index: 1;
+
     @media only screen and (min-width: 768px) {
         left: 0px;
         top: 0;
@@ -217,16 +238,18 @@ body > div > p {
         margin: 0 auto 0 0;
         height: 45px;
     }
+
     @media only screen and (max-width: 769px) {
         display: block;
         background-color: #000000;
         margin: auto;
         height: 70px;
     }
-}
-.logo > img{
-    @media only screen and (min-width: 768px) {
-        height: 45px;
+
+    img {
+        @media only screen and (min-width: 768px) {
+            height: 45px;
+        }
     }
 }
 
@@ -237,6 +260,7 @@ p {
 
 h3 {
     font-family: GodOfWar;
+
     @media only screen and (min-width: 768px) {
         width: 90%;
         font-size: 120%;
@@ -248,7 +272,10 @@ h3 {
     overflow: auto;
 }
 
-table, tr, td, th {
+table,
+tr,
+td,
+th {
     border: 1px solid whitesmoke;
     border-collapse: collapse;
     padding: 5px;
@@ -262,12 +289,15 @@ table, tr, td, th {
     background-color: rgba($color: #000000, $alpha: 0.9);
     color: whitesmoke;
     position: relative;
+
     @media only screen and (max-width: 768px) {
         top: 700px;
     }
+
     left: 5%;
     right: 5%;
     width: 90%;
+
 }
 
 .mainContent>div {

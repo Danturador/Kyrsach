@@ -17,7 +17,7 @@ window.onload = function () {
         });
     });
     insertBGForP()
-    
+
     let isCursorOnElement = false, isAnimationFinished = true, onClickEnable = false, isShowed = false, animation;
     $(".BladesOfChaos").on({
         mouseenter: function () {
@@ -61,18 +61,25 @@ window.onload = function () {
         });
     }
 
-    $('div').bind({
-  swipeup: function (event) { 
- alert("up")
-      OnWheelHideAnimate()
-},
-  swipedown: function (event) { 
-  
-  alert("down")
-      OnWheelShowAnimate()
-  }
-})
-    
+    $('body').bind({
+        swipeup: function (event) { 
+       alert("up")
+      },
+        swipedown: function (event) { 
+        
+        alert("down")
+        }
+      })
+
+    $(window).on('wheel', function (e) {
+        if (e.originalEvent.deltaY > 0 && isShowed) {
+            OnWheelHideAnimate()
+        }
+        else if (e.originalEvent.deltaY < 0 && !isShowed) {
+            OnWheelShowAnimate()
+        }
+    });
+
     function OnWheelHideAnimate() {
         if ($(window).width() > 767) {
             topPosition = "-47px";
@@ -104,11 +111,10 @@ window.onload = function () {
         const p = document.querySelectorAll(".GoW");
         const imageNameArray = ["GoWA", "GoWCoO", "GoW2005", "GoWG", "GoWB", "GoW2", "GoW3", "GoW2018", "GoWR"]
         let pathString;
-        for (let i = 0; i < p.length; i++){
+        for (let i = 0; i < p.length; i++) {
             pathString = "url('./Images/GameSeriaesConteiner/F/" + imageNameArray[i] + ".png')"
             p[i].style.backgroundImage = pathString;
-            if (i !== 0 || i !== p.length - 1) 
-            {
+            if (i !== 0 || i !== p.length - 1) {
                 p[i].style.borderTop = "1px solid black";
                 p[i].style.borderBottom = "1px solid black";
             }
@@ -116,7 +122,7 @@ window.onload = function () {
             if (i === p.length - 1) p[i].style.borderBottom = "2px solid black";
         }
     }
-    
+
     function ScrollUp(isDraging) {
         console.log(isDraging)
         if (!isDraging) {
@@ -128,7 +134,7 @@ window.onload = function () {
         }
         else $(".BladesOfChaos").draggable({ axis: 'x' })
     }
-    
+
     function ShowGameImage() {
         const Image = document.getElementById("ImageOfTheGame");
         const imageSrc = {
@@ -144,7 +150,7 @@ window.onload = function () {
         }
         for (let key in imageSrc) {
             let pElement = document.getElementById(key);
-            
+
             pElement.onmouseover = () => {
                 pElement.style.opacity = "0.7";
                 Image.src = imageSrc[key];
@@ -184,27 +190,27 @@ window.onload = function () {
     }
 
     $(function () {
-        let container = $('.DevelopersTable'), content = "", fileAdress = "https://raw.githubusercontent.com/Danturador/testDar.io/main/GoW_III/DevelopersTable.xml";
-    
+        let table = $('.DevelopersTable'), tbody = "", fileAdress = "https://raw.githubusercontent.com/Danturador/testDar.io/main/GoW_III/DevelopersTable.xml";
+
         const RequestObject = {
-    
+
             url: fileAdress,
             method: 'GET',
             dataType: 'xml',
             async: true,
             success: (resp) => {
                 $(resp).find("infoAboutGame").each((index, item) => {
-                    content += `<tr>`;
-                        content += `<td> ${item.children[0].textContent} </td>`;
-                        content += `<td class= "TitleOfTheGame"> ${item.children[1].textContent} </td>`;
-                        content += `<td> ${item.children[2].textContent} </td>`;
-                        content += `<td> ${item.children[3].textContent} </td>`;
-                        content += `<td> ${item.children[4].textContent} </td>`;
-                        content += `<td> ${item.children[5].textContent} </td>`;
-                        content += `<td> ${item.children[6].textContent} </td>`;
-                    content += `</tr>`;
+                    tbody += `<tr>`;
+                    tbody += `<td> ${item.children[0].textContent} </td>`;
+                    tbody += `<td class= "TitleOfTheGame"> ${item.children[1].textContent} </td>`;
+                    tbody += `<td> ${item.children[2].textContent} </td>`;
+                    tbody += `<td> ${item.children[3].textContent} </td>`;
+                    tbody += `<td> ${item.children[4].textContent} </td>`;
+                    tbody += `<td> ${item.children[5].textContent} </td>`;
+                    tbody += `<td> ${item.children[6].textContent} </td>`;
+                    tbody += `</tr>`;
                 })
-                container.html(content);
+                table.html(tbody);
             },
             error: (error) => console.log(error)
         }
