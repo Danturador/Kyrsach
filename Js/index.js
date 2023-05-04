@@ -64,10 +64,12 @@ window.onload = function () {
     $("body").bind({
   swipeup: function (event) { 
  alert("up")
+      OnWheelHideAnimate()
 },
   swipedown: function (event) { 
   
   alert("down")
+      OnWheelShowAnimate()
   }
 })
     
