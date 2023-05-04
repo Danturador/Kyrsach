@@ -61,7 +61,7 @@ window.onload = function () {
         });
     }
 
-    $("body").bind({
+    $('div').bind({
   swipeup: function (event) { 
  alert("up")
       OnWheelHideAnimate()
