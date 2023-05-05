@@ -6,6 +6,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+  max-width: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -15,8 +17,6 @@ body {
   background-size: cover;
   font-family: "Times New Roman", Times, serif;
   color: whitesmoke;
-  max-width: 100%;
-  min-height: 100%;
   font-size: 18px;
 }
 
