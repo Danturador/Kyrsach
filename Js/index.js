@@ -1,5 +1,40 @@
 window.onload = function () {
     ShowGameImage();
+    document.addEventListener('touchstart', HandleTouchStart, false);
+document.addEventListener("touchmove", HandleTouchMove, false);
+
+    let x1 = null;
+    let y1 = null;
+
+    function HandleTouchStart(ev){
+        alert("@@@@")
+        const firstTouch = ev.touches[0];
+        x1 = firstTouch.clientX;
+        y1 = firstTouch.clientY;
+    } 
+    function HandleTouchMove(ev){
+        if (!x1 || !y1)
+        {
+            return false;
+        }
+        let x2 = ev.touches[0].clientX;
+        let y2 = ev.touches[0].clientY;
+        let xDiff = x2 - x1;
+        let yDiff = y2 - y1;
+        console.log("!!!!")
+        if (Math.abs(xDiff) > Math.abs(yDiff))
+        {
+            if (xDiff > 0) console.log("right");
+            else console.log("left");
+        }
+        else 
+        {
+            if (yDiff > 0) console.log("down");
+            else console.log("up");
+        }
+        x1 = null;
+        y1 = null;
+    }
     $('.BladesOfChaos')[0].style.transform = "rotate(0deg)"
 
     $(".BladesOfChaos").on("mousemove", () => {
