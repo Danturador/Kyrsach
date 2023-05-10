@@ -14,7 +14,7 @@ body {
   background: url("../Images/god-of-war-ragnarok-bg.jpg") no-repeat center center fixed;
   -khtml-background-size: cover;
   -ms-background-size: cover;
-  background-size: cover;
+  background-size: 100% 100%;
   font-family: "Times New Roman", Times, serif;
   color: whitesmoke;
   font-size: 18px;
