@@ -7,7 +7,7 @@ document.addEventListener("touchmove", HandleTouchMove, false);
     let y1 = null;
 
     function HandleTouchStart(ev){
-        alert("@@@@")
+       
         const firstTouch = ev.touches[0];
         x1 = firstTouch.clientX;
         y1 = firstTouch.clientY;
