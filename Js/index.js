@@ -71,7 +71,7 @@ window.onload = function () {
         }
       })
 
-    $(window).on('wheel', function (e) {
+    $(window).on('wheel touchmove', function (e) {
         if (e.originalEvent.deltaY > 0 && isShowed) {
             OnWheelHideAnimate()
         }
