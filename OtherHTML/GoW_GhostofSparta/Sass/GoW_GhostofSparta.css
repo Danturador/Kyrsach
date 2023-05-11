@@ -15,8 +15,8 @@ body {
 }
 @media only screen and (max-width: 769px) {
   body {
-    background: url("../../../Images/desktop-wallpaper-raven-moran-on-god-of-war-god-of-war-ghost-of-sparta-thumbnail.jpg") no-repeat center 80px fixed;
-    background-size: 130% 150%;
+    background: url("../../../Images/desktop-wallpaper-raven-moran-on-god-of-war-god-of-war-ghost-of-sparta-thumbnail.jpg") no-repeat center center fixed;
+    background-size: 100% 120%;
   }
 }
 
