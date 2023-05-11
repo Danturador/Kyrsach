@@ -1,87 +1,58 @@
 window.onload = function () {
     ShowGameImage();
-    document.addEventListener('touchstart', HandleTouchStart, false);
-document.addEventListener("touchmove", HandleTouchMove, false);
 
-    let x1 = null;
-    let y1 = null;
+    $('.BladesOfChaos')[0].style.transform = "rotate(0deg)";
 
-    function HandleTouchStart(ev){
-       
-        const firstTouch = ev.touches[0];
-        x1 = firstTouch.clientX;
-        y1 = firstTouch.clientY;
-    } 
-    function HandleTouchMove(ev){
-        if (!x1 || !y1)
-        {
-            return false;
-        }
-        let x2 = ev.touches[0].clientX;
-        let y2 = ev.touches[0].clientY;
-        let xDiff = x2 - x1;
-        let yDiff = y2 - y1;
-        console.log("!!!!")
-        if (Math.abs(xDiff) > Math.abs(yDiff))
-        {
-            if (xDiff > 0) console.log("right");
-            else console.log("left");
-        }
-        else 
-        {
-            if (yDiff > 0) console.log("down");
-            else console.log("up");
-        }
-        x1 = null;
-        y1 = null;
-    }
-    $('.BladesOfChaos')[0].style.transform = "rotate(0deg)"
+    insertBGForP();
 
-    $(".BladesOfChaos").on("mousemove", () => {
-        let onClickEnable = false;
-        ScrollUp(true);
-        $(".BladesOfChaos").on("mouseup", () => {
-            ScrollUp(true);
-            onClickEnable = true;
-        });
-        $(".BladesOfChaos").on("click", () => {
-            if (onClickEnable) {
-                ScrollUp(false);
-                onClickEnable = false;
-            }
-        });
-    });
-    insertBGForP()
-
-    let isCursorOnElement = false, isAnimationFinished = true, onClickEnable = false, isShowed = false, animation;
+    let isCursorOnElement = false, isAnimationFinished = true, onClickEnable = false, isClicked = false, isShowed = false, animation, shiftX;
     $(".BladesOfChaos").on({
-        mouseenter: function () {
-            isCursorOnElement = false
-            RotateBladesAnimation();
+        mouseenter: function (e) {
+            isCursorOnElement = true;
+            if (isCursorOnElement && isAnimationFinished) RotateBladesAnimation();
+        },
+        dragstart: function() {
+            return false;
+        },
+        mousedown: function (e) {
+            shiftX = e.pageX - $(".BladesOfChaos")[0].getBoundingClientRect().left + scrollX;
         },
         mouseleave: function () {
-            isCursorOnElement = true
+            isCursorOnElement = false;
         },
-        mousemove: function () {
+        mousemove: function (evt) {
             onClickEnable = false;
-            ScrollUp(true);
+            ScrollUp(true, evt);
             $(".BladesOfChaos").on({
                 mouseup: function () {
-                    ScrollUp(true);
+                    document.onmousemove = null;
+                    $(".BladesOfChaos")[0].mouseup = null;
+                    isClicked = false;
+                    ScrollUp(true, evt);
+                    onClickEnable = true;
+                },
+                mousedown: function (){
+                    isClicked = false;
+                    ScrollUp(true, evt);
                     onClickEnable = true;
                 },
                 click: function () {
                     if (onClickEnable) {
-                        ScrollUp(false);
+                        isClicked = true;
+                        ScrollUp(false, evt);
                         OnWheelShowAnimate();
                         onClickEnable = false;
                     }
                 }
             })
+        },
+        touchmove: function(e){
+            $(".BladesOfChaos")[0].style.left = xDown - $(".BladesOfChaos")[0].offsetWidth / 2 + 'px';
         }
     })
 
     function RotateBladesAnimation() {
+        isAnimationFinished = false;
         let animation = $(".BladesOfChaos")[0].animate([
             { transform: 'rotate(0deg)' },
             { transform: 'rotate(6deg)' },
@@ -92,26 +63,17 @@ document.addEventListener("touchmove", HandleTouchMove, false);
             easing: "cubic-bezier(0, 0, 0.58, 1.0)",
         });
         animation.addEventListener('finish', function () {
-            if (!isCursorOnElement) RotateBladesAnimation()
+            isAnimationFinished = true;
+            if (isAnimationFinished && isCursorOnElement) RotateBladesAnimation();
         });
-    }
+    };
 
-    $('body').bind({
-        swipeup: function (event) { 
-       alert("up")
-      },
-        swipedown: function (event) { 
-        
-        alert("down")
-        }
-      })
-
-    $(window).on('wheel touchmove', function (e) {
+    $(window).on('wheel', function (e) {
         if (e.originalEvent.deltaY > 0 && isShowed) {
-            OnWheelHideAnimate()
+            OnWheelHideAnimate();
         }
         else if (e.originalEvent.deltaY < 0 && !isShowed) {
-            OnWheelShowAnimate()
+            OnWheelShowAnimate();
         }
     });
 
@@ -129,7 +91,7 @@ document.addEventListener("touchmove", HandleTouchMove, false);
             $(".navMenu")[0].style.top = topPosition;
             isShowed = false;
         })
-    }
+    };
     function OnWheelShowAnimate() {
         animation = $(".navMenu")[0].animate({
             top: "0",
@@ -140,14 +102,14 @@ document.addEventListener("touchmove", HandleTouchMove, false);
             $(".navMenu")[0].style.top = "0";
             isShowed = true;
         })
-    }
+    };
 
     function insertBGForP() {
         const p = document.querySelectorAll(".GoW");
-        const imageNameArray = ["GoWA", "GoWCoO", "GoW2005", "GoWG", "GoWB", "GoW2", "GoW3", "GoW2018", "GoWR"]
+        const imageNameArray = ["GoWA", "GoWCoO", "GoW2005", "GoWG", "GoWB", "GoW2", "GoW3", "GoW2018", "GoWR"];
         let pathString;
         for (let i = 0; i < p.length; i++) {
-            pathString = "url('./Images/GameSeriaesConteiner/F/" + imageNameArray[i] + ".png')"
+            pathString = "url('./Images/GameSeriaesConteiner/F/" + imageNameArray[i] + ".png')";
             p[i].style.backgroundImage = pathString;
             if (i !== 0 || i !== p.length - 1) {
                 p[i].style.borderTop = "1px solid black";
@@ -156,19 +118,20 @@ document.addEventListener("touchmove", HandleTouchMove, false);
             if (i === 0) p[i].style.borderTop = "2px solid black";
             if (i === p.length - 1) p[i].style.borderBottom = "2px solid black";
         }
-    }
+    };
 
-    function ScrollUp(isDraging) {
-        console.log(isDraging)
-        if (!isDraging) {
+    function ScrollUp(isDraging, evt) {
+        if (!isDraging && isClicked) {
             window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: 'smooth'
             });
         }
-        else $(".BladesOfChaos").draggable({ axis: 'x' })
-    }
+        else if (!isClicked) {
+            $(".BladesOfChaos")[0].style.left = evt.pageX - shiftX + 'px';
+        }
+    };
 
     function ShowGameImage() {
         const Image = document.getElementById("ImageOfTheGame");
@@ -182,40 +145,82 @@ document.addEventListener("touchmove", HandleTouchMove, false);
             "GoW:III": "./Images/God_of_War_III.jpg",
             "GoW_2018": "./Images/God_of_War_2018_cover.jpg",
             "GoW:Ragnarok": "./Images/1273405.jpg"
-        }
+        };
         for (let key in imageSrc) {
             let pElement = document.getElementById(key);
 
             pElement.onmouseover = () => {
                 pElement.style.opacity = "0.7";
                 Image.src = imageSrc[key];
-            }
+            };
             pElement.onmouseout = () => {
                 pElement.style.opacity = "1";
-            }
+            };
         }
-    }
+    };
+
     if ($(window).width() > 767) {
-        $(".upperGradient")[0].style.display = "block"
-        $(".GameSeriaesConteiner")[0].style.display = "flex"
-        $(".lowerGradient")[0].style.display = "block"
-        $(".GameSeriaesMobile")[0].style.display = "none"
+        $(".upperGradient")[0].style.display = "block";
+        $(".GameSeriaesConteiner")[0].style.display = "flex";
+        $(".lowerGradient")[0].style.display = "block";
+        $(".GameSeriaesMobile")[0].style.display = "none";
     }
     else {
-        $(".upperGradient")[0].style.display = "none"
-        $(".GameSeriaesConteiner")[0].style.display = "none"
-        $(".lowerGradient")[0].style.display = "none"
-        $(".GameSeriaesMobile")[0].style.display = "block"
+        $(".upperGradient")[0].style.display = "none";
+        $(".GameSeriaesConteiner")[0].style.display = "none";
+        $(".lowerGradient")[0].style.display = "none";
+        $(".GameSeriaesMobile")[0].style.display = "block";
     }
 
-    const anchors = document.querySelectorAll('a[href*="#"]')
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    let xDown = null;
+    let yDown = null;
+
+    function getTouches(evt) {
+        return evt.touches ||
+            evt.originalEvent.touches;
+    }
+
+    function handleTouchStart(evt) {
+        const firstTouch = getTouches(evt)[0];
+        xDown = firstTouch.clientX;
+        yDown = firstTouch.clientY;
+    };
+
+    function handleTouchMove(evt) {
+        if (!xDown || !yDown) {
+            return;
+        }
+        
+        let xUp = evt.touches[0].clientX;
+        let yUp = evt.touches[0].clientY;
+        
+        let xDiff = xDown - xUp;
+        let yDiff = yDown - yUp;
+        
+        if (xUp < window.innerWidth - 10 && xUp > 10) {
+            if (Math.abs(xDiff) < Math.abs(yDiff)){
+                if (yDiff > 0) {
+                    OnWheelHideAnimate();
+                }
+                else {
+                    OnWheelShowAnimate();
+                }
+            }
+            handleTouchStart(evt);
+        }
+    };
+
+    const anchors = document.querySelectorAll('a[href*="#"]');
 
     for (let anchor of anchors) {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault()
+            e.preventDefault();
 
             const blockID = anchor.getAttribute('href').substring(1)
-            OnWheelHideAnimate()
+            OnWheelHideAnimate();
 
             document.getElementById(blockID).scrollIntoView({
                 behavior: 'smooth',

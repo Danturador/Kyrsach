@@ -16,12 +16,12 @@ html {
 
 body {
     background: url("../Images/god-of-war-ragnarok-bg.jpg") no-repeat center center fixed;
-    -khtml-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
+    -khtml-background-size:  100% 120%;
+    -moz-background-size:  100% 120%;
+    -ms-background-size:  100% 120%;
+    -o-background-size:  100% 120%;
+    -webkit-background-size:  100% 120%;
+    background-size: 100% 120%; 
     font-family: 'Times New Roman', Times, serif;
     color: whitesmoke;
     max-width: 100%;
@@ -103,6 +103,9 @@ body {
         text-align: center;
         margin: 0 0 auto 0;
         background-color: rgba(76, 74, 210, 1);
+        &:hover {
+            background: rgb(38, 40, 156);
+        }
 
         p {
             font-family: GodOfWar;
@@ -138,6 +141,7 @@ body {
 
 .upperGradient,
 .lowerGradient {
+    display: none;
     position: relative;
     z-index: -1;
     width: 100%;
@@ -167,7 +171,7 @@ body {
 }
 
 .GameSeriaesConteiner {
-    display: flex;
+    display: none;
     background-color: aqua;
     width: 100%;
     height: 470px;
@@ -175,7 +179,7 @@ body {
 
 
 .GameSeriaesMobile {
-    display: block;
+    display: none;
     position: relative;
     top: 120px;
     height: 150px;
